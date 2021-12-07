@@ -13,28 +13,29 @@ class HomeView extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          Stack(
-            children: [
-              Align(
-                  alignment: Alignment.topRight,
-                  child: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.notifications_none))),
-              Image(
-                image: AssetImage("images/1.png"),
-                height: MediaQuery.of(context).size.height / 3,
-                width: MediaQuery.of(context).size.width,
+          Container(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: notificationIcon(context: context),
               ),
-            ],
+            ),
+            height: MediaQuery.of(context).size.height / 3,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage("images/1.png"))),
           ),
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
             child: DatePicker(
               DateTime.now(),
-              monthTextStyle: TextStyle(
-                
-              ),
+              monthTextStyle: TextStyle(),
               initialSelectedDate: DateTime.now(),
             ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.04,
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10),
@@ -44,7 +45,7 @@ class HomeView extends StatelessWidget {
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => plantCard(
-                  context: context,
+                    context: context,
                     color: index % 2 == 0 ? primaryColor : Color(0xffF1CBB6)),
                 separatorBuilder: (context, index) => SizedBox(
                       width: 15,

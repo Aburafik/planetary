@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:planetary/views/authView/log_in_view.dart';
-import 'package:planetary/views/authView/sign_up_view.dart';
-import 'package:planetary/views/home/home.dart';
-import 'package:planetary/views/onbording/onbording2.dart';
+import 'package:planetary/views/home/plant_detail_page.dart';
+
 import 'package:planetary/views/onbording/splash_screen.dart';
 
-import 'views/onbording/onbording1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,14 +14,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo', theme: ThemeData(), 
-        home: 
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(),
+        home: PlantDetailPage()
+        // CanScroll()
+        // const Notifications()
         // const Home(),
-        SignUpView()
+        // SignUpView()
         //  const LogInView()
         //  OnbordingSecondIntro()
         // OnbordingIntro()
         //  SplashScreen(),
         );
+  }
+}
+
+class CanScroll extends StatelessWidget {
+  const CanScroll({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        primary: true,
+        child: Column(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height / 3,
+              color: Colors.red,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 10,
+              child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 2000,
+                itemBuilder: (context, index) => Text(" $index Hellow"),
+              ),
+            ),
+            // Container(
+            //   height: MediaQuery.of(context).size.height / 2,
+            //   color: Colors.red,
+            // ),
+          ],
+        ),
+      ),
+    );
   }
 }

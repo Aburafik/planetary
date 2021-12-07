@@ -13,8 +13,10 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   bool isVisible = false;
+  bool isConfirmPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
+    final innerSpace = MediaQuery.of(context).size.height * 0.03;
     return Scaffold(
       backgroundColor: splashScreenTextColor,
       body: SafeArea(
@@ -25,24 +27,24 @@ class _SignUpViewState extends State<SignUpView> {
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(
-                  height: 30,
+                  height: innerSpace,
                 ),
 
                 Column(
-                  children: const [
-                    CircleAvatar(
+                  children: [
+                    const CircleAvatar(
                         backgroundColor: primaryColor,
-                        radius: 60,
+                        radius: 50,
                         child: Center(
                           child: CircleAvatar(
                             backgroundColor: splashScreenTextColor,
                             child: Center(
                                 child: Icon(
                               UniconsLine.flower,
-                              size: 55,
+                              size: 40,
                               color: primaryColor,
                             )),
-                            radius: 58,
+                            radius: 48,
                           ),
                         )),
                     SizedBox(
@@ -54,22 +56,22 @@ class _SignUpViewState extends State<SignUpView> {
                           color: primaryColor, fontSize: 25, letterSpacing: 6),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: innerSpace,
                     ),
                   ],
                 ),
                 authTextField(
                   labelText: "enter name",
                 ),
-                const SizedBox(
-                  height: 30,
+                 SizedBox(
+                  height: innerSpace,
                 ),
                 authTextField(
                   prefixIcon: Icons.email,
                   labelText: "enter email",
                 ),
-                const SizedBox(
-                  height: 30,
+                 SizedBox(
+                  height: innerSpace,
                 ),
 
                 authTextField(
@@ -77,7 +79,7 @@ class _SignUpViewState extends State<SignUpView> {
                   labelText: "City",
                 ),
                 SizedBox(
-                  height: 30,
+                  height:innerSpace,
                 ),
 
                 authTextField(
@@ -88,30 +90,26 @@ class _SignUpViewState extends State<SignUpView> {
                         : Icons.visibility,
                     onPressed: () {
                       setState(() {
-                        setState(() {
-                          isVisible = !isVisible;
-                        });
+                        isVisible = !isVisible;
                       });
                     }),
                 SizedBox(
-                  height: 30,
+                  height: innerSpace,
                 ),
 
                 authTextField(
-                    isVisible: isVisible,
+                    isVisible: isConfirmPasswordVisible,
                     labelText: "Confirm password",
-                    obsecureIcon: isVisible
+                    obsecureIcon: isConfirmPasswordVisible
                         ? Icons.visibility_off_outlined
                         : Icons.visibility,
                     onPressed: () {
                       setState(() {
-                        setState(() {
-                          isVisible = !isVisible;
-                        });
+                        isConfirmPasswordVisible = !isConfirmPasswordVisible;
                       });
                     }),
                 SizedBox(
-                  height: 30,
+                  height: innerSpace,
                 ),
 
                 reUsableButton(text: "Sign Up", onPressed: () {}),

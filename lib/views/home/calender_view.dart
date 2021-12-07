@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:planetary/utils/colors.dart';
+import 'package:planetary/utils/widgets.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:unicons/unicons.dart';
 
@@ -19,13 +20,13 @@ class CalenderView extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  Text("Calender"),
+                  const Text("Calender"),
                 ],
               ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+              notificationIcon(context: context)
             ],
           ),
           Container(
@@ -40,13 +41,13 @@ class CalenderView extends StatelessWidget {
                 itemCount: 10),
           ),
           Container(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
             decoration: BoxDecoration(
                 color: profilePageBackgroundColor,
                 borderRadius: BorderRadius.circular(10)),
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(10),
             child: SfCalendar(
-              todayHighlightColor: Color(0xff588168),
+              todayHighlightColor: const Color(0xff588168),
               cellBorderColor: profilePageBackgroundColor,
               backgroundColor: profilePageBackgroundColor,
               // showCurrentTimeIndicator: true,
@@ -78,7 +79,10 @@ class CalenderView extends StatelessWidget {
       ),
     );
   }
+
+ 
 }
+
 
 plantCategory() {
   return Column(

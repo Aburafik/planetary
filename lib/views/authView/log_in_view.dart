@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:planetary/utils/colors.dart';
 import 'package:planetary/utils/widgets.dart';
+import 'package:planetary/views/authView/sign_up_view.dart';
+import 'package:planetary/views/home/home.dart';
 import 'package:unicons/unicons.dart';
 
 class LogInView extends StatefulWidget {
@@ -13,15 +16,16 @@ class LogInView extends StatefulWidget {
 
 class _LogInViewState extends State<LogInView> {
   bool isVisible = false;
+
   @override
   Widget build(BuildContext context) {
+    final spaceHeight = MediaQuery.of(context).size.height * 0.1;
     return Scaffold(
       backgroundColor: splashScreenTextColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+          child: ListView(
             children: [
               Column(
                 children: const [
@@ -50,9 +54,15 @@ class _LogInViewState extends State<LogInView> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: spaceHeight,
+              ),
               authTextField(
                 prefixIcon: Icons.email,
                 labelText: "enter email",
+              ),
+              SizedBox(
+                height: spaceHeight,
               ),
               authTextField(
                   isVisible: isVisible,
@@ -78,13 +88,35 @@ class _LogInViewState extends State<LogInView> {
                       )),
                 ],
               ),
-              reUsableButton(text: "Sign In", onPressed: () {}),
-              GestureDetector(
-                  onTap: () {},
-                  child: const Text(
-                    "Create accounts",
-                    style: TextStyle(color: primaryColor),
-                  )),
+              SizedBox(
+                height: spaceHeight,
+              ),
+              reUsableButton(
+                  text: "Sign In",
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            child: const Home(),
+                            type: PageTransitionType.rightToLeft));
+                  }),
+              SizedBox(
+                height: spaceHeight,
+              ),
+              Align(
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: const SignUpView(),
+                              type: PageTransitionType.rightToLeft));
+                    },
+                    child: const Text(
+                      "Create accounts",
+                      style: TextStyle(color: primaryColor),
+                    )),
+              ),
             ],
           ),
         ),

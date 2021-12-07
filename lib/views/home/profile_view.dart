@@ -51,7 +51,7 @@ class ProfileView extends StatelessWidget {
                     Expanded(
                       child: Container(
                         padding: EdgeInsets.only(top: 5),
-                        child: Column(
+                        child: ListView(
                           children: [
                             profileSettingsCard(
                                 title: "Accounts", icon: Icons.person),

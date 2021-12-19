@@ -23,101 +23,103 @@ class _LogInViewState extends State<LogInView> {
     return Scaffold(
       backgroundColor: splashScreenTextColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
-          child: ListView(
-            children: [
-              Column(
-                children: const [
-                  CircleAvatar(
-                      backgroundColor: primaryColor,
-                      radius: 60,
-                      child: Center(
-                        child: CircleAvatar(
-                          backgroundColor: splashScreenTextColor,
-                          child: Center(
-                              child: Icon(
-                            UniconsLine.flower,
-                            size: 55,
-                            color: primaryColor,
-                          )),
-                          radius: 58,
-                        ),
-                      )),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Plantery",
-                    style: TextStyle(
-                        color: primaryColor, fontSize: 25, letterSpacing: 6),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: spaceHeight,
-              ),
-              authTextField(
-                prefixIcon: Icons.email,
-                labelText: "enter email",
-              ),
-              SizedBox(
-                height: spaceHeight,
-              ),
-              authTextField(
-                  isVisible: isVisible,
-                  labelText: "enter password",
-                  obsecureIcon: isVisible
-                      ? Icons.visibility_off_outlined
-                      : Icons.visibility,
-                  onPressed: () {
-                    setState(() {
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: ListView(
+              children: [
+                Column(
+                  children: const [
+                    CircleAvatar(
+                        backgroundColor: primaryColor,
+                        radius: 60,
+                        child: Center(
+                          child: CircleAvatar(
+                            backgroundColor: splashScreenTextColor,
+                            child: Center(
+                                child: Icon(
+                              UniconsLine.flower,
+                              size: 55,
+                              color: primaryColor,
+                            )),
+                            radius: 58,
+                          ),
+                        )),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "Plantery",
+                      style: TextStyle(
+                          color: primaryColor, fontSize: 25, letterSpacing: 6),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: spaceHeight,
+                ),
+                authTextField(
+                  prefixIcon: Icons.email,
+                  labelText: "enter email",
+                ),
+                SizedBox(
+                  height: spaceHeight,
+                ),
+                authTextField(
+                    isVisible: isVisible,
+                    labelText: "enter password",
+                    obsecureIcon: isVisible
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility,
+                    onPressed: () {
                       setState(() {
-                        isVisible = !isVisible;
+                        setState(() {
+                          isVisible = !isVisible;
+                        });
                       });
-                    });
-                  }),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                      onTap: () {},
-                      child: const Text(
-                        "Forgot password",
-                        style: TextStyle(color: primaryColor),
-                      )),
-                ],
-              ),
-              SizedBox(
-                height: spaceHeight,
-              ),
-              reUsableButton(
-                  text: "Sign In",
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            child: const Home(),
-                            type: PageTransitionType.rightToLeft));
-                  }),
-              SizedBox(
-                height: spaceHeight,
-              ),
-              Align(
-                child: GestureDetector(
-                    onTap: () {
+                    }),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                        onTap: () {},
+                        child: const Text(
+                          "Forgot password",
+                          style: TextStyle(color: primaryColor),
+                        )),
+                  ],
+                ),
+                SizedBox(
+                  height: spaceHeight,
+                ),
+                reUsableButton(
+                    text: "Sign In",
+                    onPressed: () {
                       Navigator.push(
                           context,
                           PageTransition(
-                              child: const SignUpView(),
+                              child: const Home(),
                               type: PageTransitionType.rightToLeft));
-                    },
-                    child: const Text(
-                      "Create accounts",
-                      style: TextStyle(color: primaryColor),
-                    )),
-              ),
-            ],
+                    }),
+                SizedBox(
+                  height: spaceHeight,
+                ),
+                Align(
+                  child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                child: const SignUpView(),
+                                type: PageTransitionType.rightToLeft));
+                      },
+                      child: const Text(
+                        "Create accounts",
+                        style: TextStyle(color: primaryColor),
+                      )),
+                ),
+              ],
+            ),
           ),
         ),
       ),

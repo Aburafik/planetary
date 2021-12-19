@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:planetary/views/home/plant_detail_page.dart';
+import 'package:planetary/views/onbording/onbording1.dart';
 
 import 'package:planetary/views/onbording/splash_screen.dart';
 
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(),
-        home: PlantDetailPage()
+        home:
+        
+        // PlantConditionDetails()
+        //  PlantDetailPage()
         // CanScroll()
         // const Notifications()
         // const Home(),
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
         //  const LogInView()
         //  OnbordingSecondIntro()
         // OnbordingIntro()
-        //  SplashScreen(),
+         SplashScreen(),
         );
   }
 }
